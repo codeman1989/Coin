@@ -4,11 +4,15 @@ import (
 	"testing"
 )
 
-func TestNewDB(t *testing.T) {
+func Test_GetDBFileName(t *testing.T) {
+	nodeID := "test"
+	wantName := "dotchain_test.db"
 
-	db := NewDB("my.db")
-	if db == nil {
-		panic("failed")
+	genFileName := GetDBFileName(nodeID)
+
+	if genFileName != wantName {
+		t.Error("dbfile name is not correct, want", wantName, ", gen", genFileName)
+	} else {
+		t.Log(genFileName)
 	}
-
 }
